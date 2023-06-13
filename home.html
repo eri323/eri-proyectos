@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="hed">
+        <h1>Erick Gutierrez - ADSO - 25573556</h1>
+    </div>
+    <div id="proyectos">
+ 
+    </div>
+    
+</body>
+<style>
+    *{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .proyecto{
+
+        height: 200px;
+        box-shadow: 2px 2px 3px 5px rgb(221, 179, 179);
+       
+
+    }
+    #proyectos{
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
+        padding: 0px 200px;
+        
+    }
+    #link{
+        display: inline-block;
+        height: 200px;
+        width: 250px;
+    }
+    #img_proyec{
+      
+        height: 200px;
+        width: 250px;   
+    }
+    @media screen and (max-width:1070px) {
+        #proyectos{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media screen and (max-width:790px) {
+        #proyectos{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media screen and (max-width:520px) {
+        #proyectos{
+            grid-template-columns: repeat(1, 1fr);
+            
+        }
+    }
+    @media screen and (max-width:420px) {
+        #proyectos{
+            padding: 0px 50px;
+            
+        }
+    }
+</style>
+<script>
+
+
+let links =[
+    "quien soy.html",
+    "calculadora.html",
+    "calendario.html",
+    "factura (1).html",
+    "formulario.html",
+    "galeria.html",
+    "hojadevida.html",
+    "semaforoboton.html",
+    "semaforo automatico.html",
+"Pagina perfil.html"
+]
+let img_pro = [
+    "./img/f1.png",
+    "./img/cal.jpg",
+    "./img/calendario.png",
+    "./img/factura.png",
+    "./img/formulario.png",
+    "./img/collage.png",
+    "./img/hv.png",
+    "./img/semaforoboton.png",
+    "./img/semaforoauto.png",
+    "./img/perfil.png"
+]
+
+
+     for (let i = 1; i <= 10; i++) {
+        let div = document.createElement("div");
+        div.id= "proyecto"+i;
+        div.className = "proyecto"
+
+        let a = document.createElement("a")
+        a.href = links[-1+i];
+        a.target = "contenido"
+        a.id = "link"
+
+        let img = document.createElement("img");
+        img.src = img_pro[-1+i]
+        img.id = "img_proyec"
+
+        
+
+        document.getElementById("proyectos").appendChild(div)
+        div.appendChild(a)
+        a.appendChild(img)
+     }
+</script>
+</html>

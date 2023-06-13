@@ -1,0 +1,166 @@
+*{
+    font-family: cursive;
+    font-weight: 500;
+    font-size: 25px;
+}
+h3{
+    color: rgb(86, 86, 216);
+    margin-bottom: 2%;
+    margin: 0%;
+}
+.eri{
+    font-size: 35px;
+}
+body{
+    margin: 0% 15%;
+ 
+    background-color: black;
+
+}
+.container{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    width: 100%;
+   
+}
+.foto{
+    background-color: #5757d9;
+    
+}
+
+.perfil{
+    display: flex;
+    flex-direction: column;
+}
+.inf{
+background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+}
+.inf1{
+    margin: 0% 0% 0% 0%;
+    display: flex;
+
+}
+.inf11{
+    margin: 0% 0% 4% 4%;
+}
+.inf2{
+    margin: 0% 0% 4% 4%;
+}
+.inf3{
+    margin: 4% 0% 4% 4%;
+}
+.inf4{
+    margin: 4% 0% 4% 4%;
+    display: flex;
+    flex-direction: column;
+}
+.inf5{
+    margin: 4% 0% 4% 4%;
+    display: flex;
+    flex-direction: column;
+}
+.inf6{
+    margin: 4% 0% 4% 4%;
+}
+/* ul{
+    padding-left: 2%;
+    list-style-type: none;
+} */
+/* #ul1{
+    padding-left: 2%;
+    list-style-type: none;
+} */
+/* li{
+    padding-left: 2rem;
+    line-height: 1.5;
+    background-image: url(img/star.png);
+    background-position: 0 0;
+    background-size: 1.4rem 1.4rem;
+    background-repeat: no-repeat;
+} */
+.img1{
+    border-radius:80%;
+    width: 100%;
+}
+.elon{
+    height: auto;
+    width: auto;
+    background-color: #5757d9;
+    margin: 0% 5%;
+    padding: 2%;
+    border-bottom-left-radius: 7000px;
+    border-bottom-right-radius: 7000px;
+}
+.rs{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.rs img{
+    margin: 5%;
+    border: 2px outset rgb(0, 0, 0);
+    border-radius: 80%;
+}
+@media  screen  and (max-width: 1243px)  {
+    .container{
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    #ul1{
+        margin: 0% 10% 3% 10%;
+    }
+    body{
+        margin: 0%;
+    }
+    .foto{
+        border-right: 0px;
+    }
+    .rs img{
+        margin: 10% 10% 4% 10%;
+    }
+    .inf{
+        grid-row: 1/2;
+    }
+    *{
+        font-size: 40px;
+    }
+    .eri{
+        font-size: 60px;
+    }
+
+}
+@media screen  and (max-width:560px){
+    .inf1{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1 fr;
+    }
+    .img1{
+        grid-row: 1/2;
+        width: 100%;
+    }
+    .inf11{
+        grid-row: 2/3;
+    }
+}
+@media screen and (max-width: 1500px){
+    .elon{
+        margin: 0% 5%;
+        width: auto;
+        height: auto;
+    }
+    .inf1{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1 fr;
+    }
+    .img1{
+        grid-row: 1/2;
+        width: 100%;
+    }
+    .inf11{
+        grid-row: 2/3;
+    }
+}

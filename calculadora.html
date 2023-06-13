@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div id="container">
+        <h1>Calculadora</h1>
+        <input type="text" id="H"> <br>
+        <div id="boto">
+
+        </div>
+    </div>
+    <style>
+        
+        body {
+            display: grid;
+            text-align: center;
+            justify-content: center;
+            
+        }
+
+        * {
+            margin: 0%;
+        }
+
+        button {
+            border-radius: 5px;
+             box-shadow: 8px 8px 5px lightblue;
+            font-size: 40px;
+            height: 100px;
+            border: 2px solid black;
+            padding: 5px;
+        }
+
+        button:hover {
+            color: rgb(123, 255, 0);
+        }
+
+        #H {
+            height: 100px;
+            width: 400px;
+            margin-bottom: 15px;
+            font-size: 50px;
+            border-radius: 10px;
+        }
+
+        #container {
+            position: relative;
+            top: 150px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(192, 255, 234);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        #boto {
+            margin: 5% 5%;
+            gap: 5px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+        }
+
+        #boton18 {
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            display: grid;
+            grid-column: 4/6;
+        }
+    </style>
+    <script>
+
+        let operandoa;
+        let operandob;
+        let operacion;
+        let boto = document.getElementById("boto")
+        let valores = [
+            "1",
+            "2",
+            "3",
+            "+",
+            "-",
+            "4",
+            "5",
+            "6",
+            "*",
+            "/",
+            "7",
+            "8",
+            "9",
+            "^",
+            "√",
+            "0",
+            ".",
+            "c",
+            "="
+        ]
+        for (let i = 0; i <= 18; i++) {
+            let botones = document.createElement("button")
+            botones.id = "boton" + i;
+            botones.textContent = valores[0 + i]
+
+            boto.appendChild(botones)
+        }
+        for (let i = 0; i <= 18; i++) {
+            document.getElementById("boton" + i).addEventListener("click", function () {
+                H.value = H.value + valores[0 + i]
+                if (document.getElementById("boton" + i) === document.getElementById("boton3")) {
+                    operandoa = H.value;
+                    operacion = "+";
+                    limpiar();
+                } else if (document.getElementById("boton" + i) === document.getElementById("boton18")) {
+                    operandob = H.value;
+                    resolver();
+                } else if (document.getElementById("boton" + i) === document.getElementById("boton4")) {
+                    operandoa = H.value;
+                    operacion = "-";
+                    limpiar();
+                } else if (document.getElementById("boton" + i) === document.getElementById("boton8")) {
+                    operandoa = H.value;
+                    operacion = "*";
+                    limpiar();
+                } else if (document.getElementById("boton" + i) === document.getElementById("boton9")) {
+                    operandoa = H.value;
+                    operacion = "/";
+                    limpiar();
+                }else if (document.getElementById("boton" + i) === document.getElementById("boton13")) {
+                    operandoa = H.value;
+                    operacion = "^";
+                    limpiar();
+                }
+                else if (document.getElementById("boton" + i) === document.getElementById("boton14")) {
+                    operandoa = H.value;
+                    operacion = "√";
+                    limpiar();
+                } else if (document.getElementById("boton" + i) === document.getElementById("boton16")) {
+                    H.value = H.value
+                } else if (document.getElementById("boton" + i) === document.getElementById("boton17")) {
+                    resetear();
+                }
+            },
+            )
+        }
+        function limpiar() {
+            H.value = "";
+        }
+        function resetear() {
+            H.value = "";
+            operandoa = 0;
+            operandob = 0;
+            operacion = "";
+        }
+        function resolver() {
+            let respuesta = 0;
+            switch (operacion) {
+                case "+":
+                    respuesta = parseFloat(operandoa) + parseFloat(operandob)
+                    break;
+                case "-":
+                    respuesta = parseFloat(operandoa) - parseFloat(operandob)
+                    break;
+                case "*":
+                    respuesta = parseFloat(operandoa) * parseFloat(operandob)
+                    break;
+                case "/":
+                    respuesta = parseFloat(operandoa) / parseFloat(operandob)
+                    break;
+                case "^":
+                    respuesta = parseFloat(operandoa) ** parseFloat(operandob)
+                    break;
+                case "√":
+                    respuesta = Math.pow(parseFloat(operandoa), 1 / parseFloat(operandob));
+                    break;
+            }
+            resetear();
+            H.value = respuesta;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

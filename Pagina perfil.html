@@ -1,0 +1,82 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="p">
+      <div class="pa">
+        <img class="img1" src="img/pnglot.com-twitter-bird-logo-png-139932.png" alt="" ; width="100%" />
+      </div>
+
+      <div class="pb">
+        <img class="img2" src="img/ini.jpg" alt="" ; />
+        <img class="img3" src="img/lapi.png" alt="">
+        <h1>Erick Raúl Gutiérrez Téllez</h1>
+        <p>Estudiante de programación</p>
+      </div>
+    </div>
+  </body>
+  <style>
+    h1 {
+      position: relative;
+      bottom: 70px;
+    }
+    p {
+      position: relative;
+      bottom: 60px;
+    }
+    * {
+      margin: 0%;
+    }
+    body {
+      height: 100vh;
+    }
+    .p {
+      position: absolute;
+      left: 25%;
+      top: 110px;
+      width: 50%;
+      border: 5px solid black;
+      text-align: center;
+      box-shadow: 20px 20px 20px rgb(138, 119, 119);
+    }
+    .pa {
+      height: 200px;
+      width: 100%;
+    }
+    .pb {
+      height: 200px;
+    }
+    .img1 {
+      height: 200px;
+    }
+    .img2 {
+      border: 5px solid white;
+      position: relative;
+      bottom: 80px;
+      border-radius: 100%;
+      width: 150px;
+      height: 150px;
+      z-index: 100;
+    }
+    .img3{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 0%;
+    }
+    @media screen and (max-width:439px){
+        .img3{
+            position: absolute;
+            bottom: 55px;
+        }
+        .pb{
+          height: 250px;
+        }
+    }
+  </style>
+</html>

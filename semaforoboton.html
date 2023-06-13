@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <button id="boton">Cambiar</button>
+        <div id="pb">
+            <div class="color" id="rojo"></div>
+            <div class="color" id="ama"></div>
+            <div class="color" id="verde"></div>
+        </div>
+    </div>
+    <script>
+        const rojo = document.getElementById("rojo")
+            const amarillo = document.getElementById("ama")
+            const verde = document.getElementById("verde")
+
+            let divselecc = 2
+            let colores = ["red", "yellow", "green"]
+            let div = document.querySelectorAll(".color")
+
+            const boton = document.getElementById("boton")
+
+            boton.addEventListener("click", function () {
+
+                let divactual = div[divselecc]
+                divactual.style.backgroundColor = ''
+
+                divselecc = (divselecc + 1) % div.length
+
+                let siguientediv = div[divselecc]
+                siguientediv.style.backgroundColor = colores[divselecc]
+
+            })
+
+
+        </script>
+        <style>
+            body {
+                margin: 0%;
+                background-color: beige;
+            }
+        
+            #pb {
+                background-color: rgb(0, 0, 0);
+                width: 300px;
+                display: grid;
+                padding: 30px;
+                gap: 15px;
+                border-radius: 60px;
+            }
+        
+            #rojo {
+                
+                border-radius: 100%;
+                height: 220px;
+        
+            }
+        
+            #ama {
+                
+                border-radius: 100%;
+                height: 220px;
+            }
+        
+            #verde {
+                
+                border-radius: 100%;
+                height: 220px;
+            }
+        
+            #container {
+                display: grid;
+        
+                height: 800px;
+                padding: 10px;
+                justify-content: center;
+            }
+        </style>
+        </body>
+        
+        </html>

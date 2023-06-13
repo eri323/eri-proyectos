@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Datos</h1>
+    <h1>Digite sus nombres aqui</h1>
+    <input type="text" id="c1">
+    <h2 id="result1"></h2>
+    <h1>Digite sus apellidos aqui</h1>
+    <input type="text" id="c2">
+    <h2 id="result2"></h2>
+    <h1>Digite su edad aqui</h1>
+    <input type="text" id="c3">
+    <h2 id="result3"></h2>
+    <h1>Digite su telefono aqui</h1>
+    <input type="number " id="c4">
+    <h2 id="result4"></h2>
+    <h1>Digite su correo electronico aqui</h1>
+    <input type="text" id="c5">
+    <h2 id="result5"></h2>
+    <h1>Digite su contraseña aqui</h1>
+    <input type="text" id="c6">
+    <h2 id="result6"></h2>
+    <br><br>
+    <button id="p" onclick="guardar()" >Confirmar</button>
+
+
+    <script>
+
+    let validacion = false
+        let registro = []
+       function validar() {
+            if (document.getElementById("c1").value.trim() === "") {
+                result1.innerHTML = "Porfavor digite nombre"
+                setTimeout(function () {
+                    result1.innerHTML = ""
+                }, 3000)
+            } else if (document.getElementById("c2").value.trim() === "") {
+                result2.innerHTML = "Porfavor digite apellido"
+                setTimeout(function () {
+                    result2.innerHTML = ""
+                }, 3000)
+            } else if (document.getElementById("c3").value.trim() === "") {
+                result3.innerHTML = "Porfavor digite edad"
+                setTimeout(function () {
+                    result3.innerHTML = ""
+                }, 3000)
+            
+            } else if (document.getElementById("c3").value < 18) {
+               result3.innerHTML = "Porfavor tiene que ser mayor de edad"
+                setTimeout(function () {
+                    result3.innerHTML = ""
+                }, 3000)
+            } 
+            else if (document.getElementById("c4").value.trim() === "") {
+                result4.innerHTML = "Porfavor digite telefono"
+                setTimeout(function () {
+                    result4.innerHTML = ""
+                }, 3000)
+            }else if (document.getElementById("c4").value.length < 10) {
+                result4.innerHTML = "Porfavor digite 10 caracteres"
+                setTimeout(function () {
+                    result4.innerHTML = ""
+                }, 3000)
+            } 
+            else if (document.getElementById("c5").value.trim() === "") {
+                result5.innerHTML = "Porfavor digite correo"
+                
+                setTimeout(function () {
+                    result5.innerHTML = ""
+                }, 3000)
+            }
+            else if(document.getElementById("c5").value.includes("@gmail.com") || document.getElementById("c5").value.includes("@hotmail.com") || document.getElementById("c5").value.includes("@outlook.com")){
+               
+            }else if (document.getElementById("c6").value.trim() === "") {
+                result6.innerHTML = "Porfavor digite password"
+                setTimeout(function () {
+                    result6.innerHTML = ""
+                }, 3000)
+            } else {
+                validacion = true
+            }
+        }
+
+         function guardar() {
+                validar()
+                let datos = {
+                    nombre: document.getElementById("c1").value,
+                    apellidos: document.getElementById("c2").value,
+                    edad: document.getElementById("c3").value,
+                    telefono: document.getElementById("c4").value,
+                    correo: document.getElementById("c5").value,
+                    clave: document.getElementById("c6").value,
+                }
+
+                if (validacion === true) {
+                    registro.push(datos)
+                    console.log(registro);
+                    limpiar()
+                }
+
+            }
+
+            function limpiar() {
+                document.getElementById("c1").value = ""
+                document.getElementById("c2").value = ""
+                document.getElementById("c3").value = ""
+                document.getElementById("c4").value = ""
+                document.getElementById("c5").value = ""
+                document.getElementById("c6").value = ""
+            }
+    </script>
+    <style>
+        h2{
+            color: red;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        h1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30px;
+            margin-top: 30px;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            margin-top: 30px;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: beige;
+        }
+    </style>
+</body>
+
+</html>

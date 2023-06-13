@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi primera pagina WEB</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="a">
+      <h3 id="aaa" style="font-size: 30px">Erick Gutiérrez</h3>
+      <h3 id="aa" style="font-size: 30px">Inicio</h3>
+      <h3 id="ab" style="font-size: 30px">¿Quien soy?</h3>
+      <h3 id="ac" style="font-size: 30px">Proyectos</h3>
+    </div>
+    <div class="b">
+      <div class="bb">
+        <img src="img/f1.png" alt="io" style="width: 700px; height: 700px" />
+      </div>
+      <div class="ba">
+        <h1 class="t1" style="margin-top: 5; color: orangered; font-size: 70px">
+          ¿Quien soy?
+        </h1>
+        <p style="font-size: 50px">
+          Soy Erick Raúl Gutiérrez Téllez, tengo 16 años, me gusta el futbol, jugar videojuegos y pasar tiempo en
+          familia y con amigos, estudio programación en el sena
+        </p>
+        <button style="
+              color: white;
+              border-radius: 9%;
+              font-size: 50px;
+              background-color: orangered;
+            ">
+          Leer mas
+        </button>
+      </div>
+    </div>
+    <div class="c">
+      3
+      <div class="cc">
+        <img src="img/m.jpg" alt="sena" style="width: 400px;border-radius: 70%; height: 400px; margin-top: 5px" />
+      </div>
+      <div class="ca">
+        <p style="font-size: 50px; text-align: center">
+          El talento es importante, pero la disciplina y el trabajo duro son lo que realmente te llevarán al éxito
+        </p>
+        <p style="font-size: 40px; text-align: center">-Messi</p>
+      </div>
+    </div>
+    <div class="d">
+      <div class="dd">
+        <h1 style="font-size: 70px">Mis proyectos</h1>
+      </div>
+      <div class="da">
+        <img src="img/f3.png" alt="ese" style="width: 100%; height: 30%" />
+        <h3 style="font-size: 70px">Negocio</h3>
+        <p style="font-size: 40px; flex-grow: 2;">
+          Iniciar un negocio sobre tecnologia, que sea una segunda opción de trabajo, en caso de que no salgan las cosas bien
+        </p>
+        <button style="
+              color: white;
+              background-color: orangered;
+              font-size: 40px;
+              margin-top: 0%;
+            ">
+          Ver proyecto
+        </button>
+      </div>
+      <div class="db">
+        <img src="img/f4.png" alt="ese" style="width: 100%; height: 30%" />
+        <h3 style="font-size: 70px">Viajar</h3>
+        <p style="font-size: 40px; flex-grow: 2;">
+          Sacar la visa a diferentes paises para asi poder viajar, trabajar y aprender de distintos lusgares del mundo
+        </p>
+        <button style="
+              color: white;
+              background-color: orangered;
+              font-size: 40px;
+              margin-top: 0%;
+            ">
+          Ver proyecto
+        </button>
+      </div>
+      <div class="dc">
+        <img src="img/f5.png" alt="ese " style="width: 100%; height: 30%" />
+        <h3 style="font-size: 70px">Estudio</h3>
+        <p style="font-size: 40px; flex-grow: 2;">
+          Ampliar mis conocimientos en programación y analisis de datos con diferentes metodos de estudio 
+        </p>
+        <button style="
+              color: white;
+              background-color: orangered;
+              font-size: 40px;
+              margin-top: 0;
+            ">
+          Ver proyecto
+        </button>
+      </div>
+      <div class="de">
+        <img src="img/f6.png" alt="ese" style="width: 100%; height: 30%" />
+        <h3 style="font-size: 70px">Hogar</h3>
+        <p style="font-size: 40px; flex-grow: 2;">
+          Tener la tranquilidad de una casa, un lugar propio, ya sea solo o acompañado, poder ser el dueño de mi tiempo y vida al 100%
+        </p>
+        <button style="
+              color: white;
+              background-color: orangered;
+              font-size: 40px;
+              margin-top: 0%;
+            ">
+          Ver proyecto
+        </button>
+      </div>
+    </div>
+    <div class="e">
+      <h3 style="text-align: right; width: 100%;">
+        Copyright 2018. Todos los derechos reservados
+      </h3>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    margin: 0%;
+    display: grid;
+  }
+
+  .a {
+    width: 100%;
+    background-color: dimgrey;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  #aaa {
+    margin-left: 5%;
+    flex-grow: 10;
+  }
+
+  #aa {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  #ab {
+    flex-grow: 1;
+    text-align: center
+  }
+
+  #ac {
+    flex-grow: 1;
+    text-align: center
+  }
+
+  #ac {
+    grid-column: 4/5;
+    text-align: center;
+    grid-row: 1/2;
+  }
+
+  .b {
+    height: auto;
+    width: 100%;
+    padding-top: 2%;
+    top: 0%;
+    left: 0%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .bb {
+    height: auto;
+    margin: 6%;
+    text-align: right;
+  }
+
+  .ba {
+    padding-top: 10%;
+    height: auto;
+    margin: 6%;
+    text-align: left;
+  }
+
+  .c {
+    width: 100%;
+    margin: 0%;
+    background-color: orangered;
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .cc {
+    margin: 0%;
+    text-align: center;
+  }
+
+  .ca {
+    margin-right: 10%;
+    margin-left: 10%;
+    top: 0%;
+    margin-top: 0%;
+  }
+
+  .d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 16px;
+    padding-bottom: 5%;
+  }
+
+  .dd {
+    grid-column: 1/5;
+    text-align: center;
+    margin: 0%;
+  }
+
+  .da {
+    justify-content: space-between;
+    border: 2px solid black;
+    height: 100%;
+    text-align: center;
+    grid-column: 1/2;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .db {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    border: 2px solid;
+    height: 100%;
+    text-align: center;
+    grid-column: 2/3;
+    margin: 5%;
+  }
+
+  .dc {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    border: 2px solid;
+    height: 100%;
+    text-align: center;
+    margin: 5%;
+  }
+
+  .de {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    border: 2px solid;
+    height: 100%;
+    text-align: center;
+    margin: 5%;
+  }
+
+  .e {
+    max-width: 100%;
+    background-color: gray;
+    display: flex;
+    text-align: right;
+  }
+
+  .button {
+    background-color: orangered;
+    border: 5px solid black;
+  }
+
+  @media only screen and (max-width: 1230px) {
+    .b {
+      grid-template-columns: 100%;
+      grid-column: 1/2;
+    }
+
+    .bb {
+      text-align: center;
+      margin: 0%;
+    }
+
+    .ba {
+      margin: 6%;
+      margin-top: 0%;
+      text-align: center;
+      padding: 0%;
+    }
+
+    .t1 {
+      margin: 0%;
+    }
+  }
+
+  @media only screen and (max-width: 1750px) {
+    .d {
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+      gap: 10px;
+    }
+
+    .dd {
+      grid-column: 1/4;
+    }
+
+    .da {
+      margin: 5%;
+      grid-column: 1/2;
+    }
+
+    .db {
+      grid-column: 2/3;
+    }
+
+    .dc {
+      grid-column: 3/4;
+    }
+
+    .de {
+      grid-column: 1/2;
+    }
+  }
+
+  @media only screen and (max-width: 1500px) {
+
+    .d {
+      grid-template-columns: 50% 50%;
+      margin-bottom: 5%;
+      column-gap: 10px;
+    }
+
+    .dd {
+      grid-column: 1/3;
+    }
+
+    .da {
+      grid-column: 1/2;
+    }
+
+    .db {
+      grid-column: 2/3;
+    }
+
+    .dc {
+      grid-column: 1/2;
+    }
+
+    .de {
+      grid-column: 2/3;
+    }
+  }
+
+  @media only screen and (max-width: 950px) {
+    .d {
+      grid-template-columns: 100%;
+      width: 100%;
+      gap: 10px;
+    }
+
+    .dd {
+      grid-column: 1/2;
+    }
+
+    .da {
+      margin: 5%;
+      grid-column: 1/2;
+    }
+
+    .db {
+      grid-column: 1/2;
+    }
+
+    .dc {
+      grid-column: 1/2;
+    }
+
+    .de {
+      grid-column: 1/2;
+    }
+  }
+</style>
+
+</html>
