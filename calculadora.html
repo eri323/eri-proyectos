@@ -16,11 +16,29 @@
         <h1>Calculadora</h1>
         <input type="text" id="H"> <br>
         <div id="boto">
-
         </div>
+        <a id="aaa" href="./home.html">
+            <button id="bbutton">Volver</button>
+        </a>
+        
     </div>
     <style>
-        
+        #aaa{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    
+  }
+  #bbutton{
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+
+     box-shadow: 8px 8px 5px lightblue;
+
+  }
+  #aaa :hover{
+    background-color: rgb(100, 119, 230);
+  }
         body {
             display: grid;
             text-align: center;
@@ -32,7 +50,7 @@
             margin: 0%;
         }
 
-        button {
+        .botones {
             border-radius: 5px;
              box-shadow: 8px 8px 5px lightblue;
             font-size: 40px;
@@ -41,8 +59,8 @@
             padding: 5px;
         }
 
-        button:hover {
-            color: rgb(123, 255, 0);
+        .botones hover {
+            color: rgb(196, 18, 18);
         }
 
         #H {
@@ -109,6 +127,7 @@
         for (let i = 0; i <= 18; i++) {
             let botones = document.createElement("button")
             botones.id = "boton" + i;
+            botones.className= "botones"
             botones.textContent = valores[0 + i]
 
             boto.appendChild(botones)

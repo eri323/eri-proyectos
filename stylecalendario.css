@@ -1,17 +1,34 @@
+
 body{
-    background-color: rgb(167, 163, 163);
+    background-color: rgb(124, 114, 146);
 }
 .contenedor-cards{
     display: grid;
-    grid-template-columns: repeat(4, 22%);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     justify-content: center;
     text-align: center;
     margin: 0px;
     
-    
-    
 }
+#aaa {
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+
+    }
+
+    #bbutton {
+        font-size: 30px;
+   
+
+
+    }
+
+    #aaa :hover {
+        background-color: rgb(100, 119, 230);
+    }
+
 h1{
     display: block;
     margin-top: 0;
@@ -20,11 +37,11 @@ h1{
     font-weight: bold;
 }
 th{
-    color: #e66c6b;
+    color: #000000;
     font-weight: bold;
 }
 td:hover{
-    background-color:#e66b6b71;
+    background-color:#a0fa0e71;
 }
 
 table{
@@ -36,11 +53,14 @@ table{
 }
 
 .tarjeta{
-    width: 260px;
-    height: auto; 
-    box-shadow: .8rem .8rem .8rem rgb(56, 55, 55);
-    
-    
+  
+   
+            height: auto;
+       
+            display: flex;
+        
+            align-items: center;
+            flex-flow: column;
 }
 .meses{
     background-color: #e66c6b;
@@ -49,6 +69,7 @@ table{
     color: white;
     font-weight: bold;
     border-radius: 5px 5px 0 0 ;
+    width: 245px;
     
 }
 .n{
@@ -87,7 +108,7 @@ table{
     width: 6px;
     margin: 5px;
     border-radius: 20px;
-    background-color: rgb(237, 156, 156);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 4px rgba(0, 0, 0, 0.461);
     justify-content: left;
 }
@@ -96,7 +117,7 @@ table{
     width: 6px;
     margin: 5px;
     border-radius: 20px;
-    background-color: rgb(237, 156, 156);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 4px rgba(0, 0, 0, 0.461);
 }
 .c1-1{
@@ -104,7 +125,7 @@ table{
     width: 6px;
     margin: 5px;
     border-radius: 20px;
-    background-color: rgb(237, 156, 156);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 4px rgba(0, 0, 0, 0.461);
 }
 .c1-2{
@@ -112,19 +133,19 @@ table{
     width: 6px;
     margin: 5px;
     border-radius: 20px;
-    background-color: rgb(237, 156, 156);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 4px rgba(0, 0, 0, 0.461);
 }
 
 
 @media screen and (max-width:1200px){
     .contenedor-cards{
-        grid-template-columns: repeat(2, 35%);
+        grid-template-columns: repeat(2, 1fr);
 }
 }
 
 @media screen and (max-width:750px){
     .contenedor-cards{
-        grid-template-columns: repeat(1, 50%);
+        grid-template-columns: repeat(1, 1fr);
 }
 }

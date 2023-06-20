@@ -9194,44 +9194,36 @@
 
 
 
-                let encabezado = [
-                    "ID",
-                    "Nombre",
-                    "Apellidos",
-                    "Edad",
-                    "Telefono",
-                    "Opciones"
-                ]
-    setTimeout(() => {
-            for (i = 0; i <= 5; i++) {
-                let campotexto = document.createElement("td");
-        
-                campotexto.className = "tablita"
-                campotexto.id = "tablita" + i
-                campotexto.textContent = encabezado[i]
-                document.getElementById("tabla").appendChild(campotexto)
-            }
-            for (i = 0; i < data.length; i++) {
-                let texto = document.createElement("tr");
-                let texto2 = document.createElement("tr");
-                let texto3 = document.createElement("tr");
-                let texto4 = document.createElement("tr");
-                let texto5 = document.createElement("tr");
-                let texto6 = document.createElement("tr");
-                texto.textContent = data[i].id
-                texto2.textContent = data[i].nombre
-                texto3.textContent = data[i].apellido
-                texto4.textContent = data[i].edad
-                texto5.textContent = data[i].telefono
-                texto6.textContent = "✍️ ❌"
-                document.getElementById("tablita0").appendChild(texto)
-                document.getElementById("tablita1").appendChild(texto2)
-                document.getElementById("tablita2").appendChild(texto3)
-                document.getElementById("tablita3").appendChild(texto4)
-                document.getElementById("tablita4").appendChild(texto5)
-                document.getElementById("tablita5").appendChild(texto6)
-            }
-            }, 1000);
+                let container = document.getElementById("container");
+    let tabla = "<table>";
+
+    tabla += `
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Teléfono</th>
+        <th>Opciones</th>
+      </tr>
+    `;
+
+    data.forEach(persona => {
+      tabla += `
+        <tr>
+          <td>${persona.id}</td>
+          <td>${persona.nombre}</td>
+          <td>${persona.apellido}</td>
+          <td>${persona.edad}</td>
+          <td>${persona.telefono}</td>
+          <td>
+            <button>📄</button> 
+            <button>➕</button> 
+          </td>
+          
+        </tr>
+      `;
+    });
     </script>
  <style>
     *{

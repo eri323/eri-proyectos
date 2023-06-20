@@ -15,9 +15,30 @@
     <div id="b">
         <div id="fotos">
         </div>
+        <a id="aaa" href="./home.html">
+            <button id="bbutton">Volver</button>
+        </a>
     </div>
+    
 </body>
 <style>
+    #aaa{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    
+  }
+  #bbutton{
+    margin-top: 5%;
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+
+     box-shadow: 8px 8px 5px lightblue;
+
+  }
+  #aaa :hover{
+    background-color: rgb(179, 188, 243);
+  }
     body {
         margin: 0;
         display: flex;
@@ -66,7 +87,7 @@
     }
 
     #b {
-        display: flex;
+        display: grid;
         justify-content: center;
     }
 
