@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>citas</title>
+    <link rel="stylesheet" href="./stylevte2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="container">
+        <button style="margin: 20px 0px;" data-bs-toggle="modal" data-bs-target="#exampleModal" id="boton">Crear
+            cita</button>
+        <div id="checks">
+            <label for=""><input type="checkbox" id="Todas" class="checkbox" name="check"> Todas</label>
+            <label for=""><input type="checkbox" id="Anuladas" class="checkbox" name="check"> Anuladas</label>
+            <label for=""><input type="checkbox" id="Abiertas" class="checkbox" name="check">En proceso</label>
+            <label for=""><input type="checkbox" id="Concluidas" class="checkbox" name="check">Concluidas</label>
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo registro</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h4 id="Alerta"></h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="">Nombre mascota</label><input type="text" id="nombre">
+
+                        <label for="">Propietario</label><input type="text" id="propietario">
+
+                        <label for="">Telefono</label><input type="number" id="telefono">
+                        
+
+                            <label for="tipo" class="form-label">Tipo de animal</label>
+                        <select name="" id="tipo" class="form-select">
+                            <option value=""></option>
+                            <option value="Gato">Gato</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Ave">Ave</option>
+                            <option value="Pez">Pez</option>
+                            <option value="Reptil">Reptil</option>
+                        </select>
+                        
+                        
+
+                        <label for="">Fecha</label><input type="date" id="fecha">
+
+                        <label for="">Hora</label><input type="time" id="hora">
+
+                        <label for="">Sintomas</label><textarea name="" id="sinto" cols="30" rows="10"></textarea>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button onclick="if(validar()) crear(), limpiar()" type="button" class="btn btn-primary"
+                            id="boto" data-bs-toggle="modal" data-bs-target="#exampleModal">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h1 id="citatitle">Citas</h1>
+        <div id="tarjetas">
+
+            <img src="./img/masco.png" alt="" id="img3">
+
+        </div>
+        <hr>
+        <a href="./citasvete.html">
+            <button id="boton">Volver</button>
+        </a>
+        <div id="redes">
+
+        </div>
+    </div>
+
+</body>
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        crear()
+    })
+
+    let checkboxes = document.querySelectorAll('.checkbox');
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                checkboxes.forEach(function (otherCheckbox) {
+                    if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+    let citaModificadaIndex = null;
+    let mascotas = [
+        {
+            gato: "./img/gato.png",
+            perro: "./img/perro.png",
+            ave: "./img/ave.png",
+            pez: "./img/pez.png",
+            reptil: "./img/reptil.png"
+        }
+
+    ];
+
+    function crear() {
+        if (validar()) {
+
+           
+            let cardsContainer = document.getElementById("tarjetas");
+            let guardar = document.getElementById("boto");
+            guardar.setAttribute("onclick", "crear()"); // Agregar el atributo onclick
+            let nombreMascota = document.getElementById("nombre").value;
+            let propietario = document.getElementById("propietario").value;
+            let telefono = document.getElementById("telefono").value;
+            let fecha = document.getElementById("fecha").value;
+            let hora = document.getElementById("hora").value;
+            let mascotaSeleccionada = mascotas[0];
+            let tipoSeleccionado = document.getElementById("tipo").value;
+            let sintomas = document.getElementById("sinto").value;
+
+
+            if (citaModificadaIndex !== null) {
+                // se actualizan los datos en la lista de una cita existente
+                let tarjetaModificada = cardsContainer.children[citaModificadaIndex];
+
+                let nombreElement = tarjetaModificada.querySelector("h2");
+                let propietarioElement = tarjetaModificada.querySelector("p:nth-child(3)");
+                let telefonoElement = tarjetaModificada.querySelector("p:nth-child(4)");
+                let fechaElement = tarjetaModificada.querySelector("p:nth-child(5)");
+                let horaElement = tarjetaModificada.querySelector("p:nth-child(6)");
+                let tipoElement = tarjetaModificada.querySelector("p:nth-child(7)");
+                let sintomasElement = tarjetaModificada.querySelector("p:nth-child(8)");
+
+                nombreElement.textContent = nombreMascota;
+                propietarioElement.innerHTML = "<strong>Propietario:</strong> " + propietario;
+                telefonoElement.innerHTML = "<strong>Teléfono:</strong> " + telefono;
+                fechaElement.innerHTML = "<strong>Fecha:</strong> " + fecha;
+                horaElement.innerHTML = "<strong>Hora:</strong> " + hora;
+                tipoElement.innerHTML = "<strong>Animal:</strong> " + tipoSeleccionado + "<br><img src='" + mascotaSeleccionada;
+                sintomasElement.innerHTML = "<strong>Síntomas:</strong> " + sintomas;
+
+                // reinicia el valor de citaModificadaIndex
+                citaModificadaIndex = null;
+            }
+            else {
+                for (let i = 0; i < mascotas.length; i++) {
+                    let mascota = mascotas[i];
+
+                    let card = document.createElement("div");
+                    card.className = "card";
+                    card.id = "tarjeta-" + i;
+                    card.style.border = "3px solid rgb(67, 193, 207)";
+                    card.style.borderRadius = "20px"
+                    let imagen = document.createElement("img");
+                    if (document.getElementById("tipo").value == "Gato") {
+                        imagen.src = mascota.gato;
+                    } else if (document.getElementById("tipo").value == "Perro") {
+                        imagen.src = mascota.perro;
+                    } else if (document.getElementById("tipo").value == "Ave") {
+                        imagen.src = mascota.ave;
+                    } else if (document.getElementById("tipo").value == "Pez") {
+                        imagen.src = mascota.pez;
+                    } else if (document.getElementById("tipo").value == "Reptil") {
+                        imagen.src = mascota.reptil;
+                    }
+                    let nombre = document.createElement("h2");
+                    nombre.textContent = document.getElementById("nombre").value;
+
+                    let propietario = document.createElement("p");
+                    propietario.innerHTML = "<strong>Propietario:</strong> " + document.getElementById("propietario").value;
+
+                    let telefono = document.createElement("p");
+                    telefono.innerHTML = "<strong>Teléfono:</strong> " + document.getElementById("telefono").value;
+
+                    let fecha = document.createElement("p");
+                    fecha.innerHTML = "<strong>Fecha:</strong> " + document.getElementById("fecha").value;
+
+                    let hora = document.createElement("p");
+                    hora.innerHTML = "<strong>Hora:</strong> " + document.getElementById("hora").value;
+
+                    let tipoSeleccionado = document.getElementById("tipo").value;
+                    let tipoSeleccionadoElement = document.createElement("p");
+                    tipoSeleccionadoElement.innerHTML = "<strong>Tipo:</strong> " + tipoSeleccionado;
+
+                    let sintomas = document.createElement("p");
+                    sintomas.innerHTML = "<strong>Síntomas:</strong> " + document.getElementById("sinto").value;
+
+                    let modificar = document.createElement("button");
+                    modificar.style.borderRadius = "30px"
+                    modificar.innerHTML = "Modificar"
+                    modificar.id = "BT1"
+                    modificar.className = "bot"
+                    modificar.setAttribute("data-tarjeta-id", "tarjeta-" + i);
+                    modificar.setAttribute("data-indice", i);
+                    modificar.setAttribute("data-bs-toggle", "modal");
+                    modificar.setAttribute("data-bs-target", "#exampleModal");
+                    modificar.addEventListener("click", function (event) {
+                        editarCita(event);
+                    });
+
+                    let guardar = document.getElementById("boto");
+                    if (citaModificadaIndex === null) {
+                        guardar.onclick = function () {
+                            if (validar()) {
+                                crear();
+                                limpiar
+                            }
+                        };
+                    } else {
+                        guardar.onclick = function () {
+                            if (validar()) {
+                                editarCita();
+                            }
+                        };
+                    }
+                    let Anular = document.createElement("button");
+                    Anular.innerHTML = " Anular"
+                    Anular.id = "BT2"
+                    Anular.className = "bot"
+                    Anular.style.borderRadius = "30px"
+                    Anular.addEventListener("click", function () {
+                        Anularcita(event)
+                    });
+                    Anular.setAttribute("data-bs-toggle", "modal");
+                    Anular.setAttribute("data-bs-target", "#confirmModal");
+                    Anular.setAttribute("data-tarjeta-id", "tarjeta-" + i);
+                    Anular.setAttribute("data-id", "tarjeta-" + i);
+
+                    let Concluir = document.createElement("button");
+                    Concluir.innerHTML = "Concluir"
+                    Concluir.id = "BT3"
+                    Concluir.className = "bot"
+                    Concluir.style.borderRadius = "30px"
+                    Concluir.addEventListener("click", function () {
+                        Concluircita(event)
+                    });
+                    Concluir.setAttribute("data-bs-toggle", "modal");
+                    Concluir.setAttribute("data-bs-target", "#confirmModal");
+                    Concluir.setAttribute("data-tarjeta-id", "tarjeta-" + i);
+                    Concluir.setAttribute("data-id", "tarjeta-" + i);
+                    card.appendChild(imagen);
+                    card.appendChild(nombre);
+                    card.appendChild(propietario);
+                    card.appendChild(telefono);
+                    card.appendChild(fecha);
+                    card.appendChild(hora);
+                    card.appendChild(tipoSeleccionadoElement);
+                    card.appendChild(sintomas);
+                    card.appendChild(modificar);
+                    card.appendChild(Anular);
+                    card.appendChild(Concluir);
+                    cardsContainer.appendChild(card);
+                }
+            }
+
+        }
+    }
+  
+    function editarCita(event) {
+
+        let tarjeta = event.target.closest(".card");
+
+
+
+        let nombreMascota = tarjeta.querySelector("h2").textContent;
+        let propietario = tarjeta.querySelector("p:nth-child(3)").textContent.replace("Propietario: ", "");
+        let telefono = tarjeta.querySelector("p:nth-child(4)").textContent.replace("Teléfono: ", "");
+        let fecha = tarjeta.querySelector("p:nth-child(5)").textContent.replace("Fecha: ", "");
+        let hora = tarjeta.querySelector("p:nth-child(6)").textContent.replace("Hora: ", "");
+        let animal = tarjeta.querySelector("p:nth-child(7)").textContent.replace("Animal: ", "");
+        let sintomas = tarjeta.querySelector("p:nth-child(8)").textContent.replace("Síntomas: ", "");
+
+        document.getElementById("nombre").value = nombreMascota;
+        document.getElementById("propietario").value = propietario;
+        document.getElementById("telefono").value = telefono;
+        document.getElementById("fecha").value = fecha;
+        document.getElementById("hora").value = hora;
+        document.getElementById("tipo").value = animal;
+        document.getElementById("sinto").value = sintomas;
+       
+        /* let tipoSeleccionadoElement = document.getElementById("tipo");
+    tipoSeleccionadoElement.value = animal; // Establecer el tipo de animal en el modal
+
+    // Actualizar la imagen correspondiente al tipo de animal
+    let imagen = document.querySelector(".modal-body img");
+    if (animal === "Gato") {
+        imagen.src = mascota.gato;
+    } else if (animal === "Perro") {
+        imagen.src = mascota.perro;
+    } else if (animal === "Ave") {
+        imagen.src = mascota.ave;
+    } else if (animal === "Pez") {
+        imagen.src = mascota.pez;
+    } else if (animal === "Reptil") {
+        imagen.src = mascota.reptil;
+    }
+    document.getElementById("boto").addEventListener("click", function () {
+    if (citaModificadaIndex === null) {
+        if (validar()) {
+            crear();
+        }
+    } else {
+        editarCita();
+    }
+}); *//* 
+        const modalElement = document.getElementById("exampleModal");
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    modalInstance.hide(); */
+
+
+        citaModificadaIndex = Array.from(tarjeta.parentNode.children).indexOf(tarjeta);
+    }
+
+
+    function limpiar() {
+        document.getElementById("nombre").value = "";
+        document.getElementById("propietario").value = "";
+        document.getElementById("telefono").value = "";
+        document.getElementById("tipo").value = "";
+        document.getElementById("fecha").value = "";
+        document.getElementById("hora").value = "";
+        document.getElementById("sinto").value = "";
+    }
+
+
+    function Anularcita() {
+        let tarjeta = event.target.closest(".card");
+        tarjeta.style.backgroundColor = "rgb(255, 163, 163)";
+        tarjeta.style.margin = "0";
+        tarjeta.style.border = "3px solid red"
+    }
+
+    function Concluircita() {
+        let tarjeta = event.target.closest(".card");
+        tarjeta.style.backgroundColor = "#66FF66";
+        tarjeta.style.margin = "0";
+        tarjeta.style.border = "3px solid green"
+    }
+
+
+
+
+
+    function validar() {
+
+
+        let validacion = true;
+        let hora = document.getElementById("hora").value;
+        let Hmi = new Date();
+        Hmi.setHours(6, 0, 0); // Establece la hora mínima a las 6 am
+
+        let Hma = new Date();
+        Hma.setHours(18, 0, 0); // Establece la hora máxima a las 6 pm
+
+        let Hsel = new Date();
+
+        Hsel.setHours(parseInt(hora.split(":")[0]), parseInt(hora.split(":")[1]), 0);
+
+
+
+        let fecha = new Date(document.getElementById("fecha").value.trim());
+
+        let FA = new Date();
+
+        // Obtiene el día de la semana (domingo: 0, lunes: 1, ..., sábado: 6)
+        let DS = fecha.getDay();
+
+        // Obtiene el día actual
+        let DA = new Date().getDay();
+        if (document.getElementById("nombre").value.trim() === "") {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite un nombre";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+            });
+            validacion = false;
+        }
+
+        else if (document.getElementById("propietario").value.trim() === "") {
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite el propieatario";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+            });
+
+            validacion = false;
+        }
+
+        else if (document.getElementById("telefono").value.trim() === "") {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite numero de telefono";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+            });
+
+            validacion = false;
+        }
+        else if (document.getElementById("telefono").value.trim().length !== 10) {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite 10 numeros para el numero de telefono";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+            });
+
+            validacion = false;
+        }
+
+        else if (document.getElementById("tipo").value.trim() === "") {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite el tipo de mascota";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+
+            });
+            validacion = false;
+        } else if (document.getElementById("fecha").value.trim() === "") {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite la fecha";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+
+            });
+            validacion = false;
+        }
+
+        else if (new Date(fecha) <= FA || DS === 5 || DS === 6 || DS === FA) {
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor selecciona una fecha que no sea la actual ni fechas pasadas, ademas no contamos con servico los fines de semana";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red";
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500);
+            });
+            validacion = false;
+        }
+        /* else if (DS === 0 || DS === 6) {
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor selecciona una fecha válida (no sábado ni domingo)";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red";
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500);
+            });
+            validacion = false;
+        } 
+ */
+
+        else if (document.getElementById("hora").value.trim() === "") {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite la hora";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+
+            });
+            validacion = false;
+        }
+        else if (Hsel < Hmi || Hsel > Hma) {
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor seleccione una hora entre el horario permitido(6:00 AM - 6:00 PM)";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red";
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500);
+            });
+            validacion = false;
+        }
+
+        else if (document.getElementById("sinto").value.trim() === "") {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Por favor digite los sintomas";
+                Alerta.style.backgroundColor = "rgb(255, 163, 163)";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid red"
+
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500)
+
+            });
+            validacion = false;
+        }
+        else {
+
+            setTimeout(function () {
+                Alerta.innerHTML = "Cita guardada exitosamente";
+                Alerta.style.backgroundColor = "#66FF66";
+                Alerta.style.fontSize = "20px";
+                Alerta.style.textAlign = "center";
+                Alerta.style.width = "100%";
+                Alerta.style.padding = "20px";
+                Alerta.style.margin = "0";
+                Alerta.style.border = "3px solid green"
+                setTimeout(function () {
+                    Alerta.innerHTML = "";
+                    Alerta.style = "";
+                }, 3500);
+
+            });
+
+        }
+        return validacion;
+    }
+
+
+
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+</html>

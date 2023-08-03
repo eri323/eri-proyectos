@@ -1,0 +1,161 @@
+
+body {
+    
+    height: 100vh;
+    
+}
+#aaa{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    
+  }
+  #bbutton{
+    margin-top: 5%;
+    font-size: 30px;
+    background-color: rgb(255, 255, 255);
+
+     box-shadow: 8px 8px 5px lightblue;
+
+  }
+  #aaa :hover{
+    background-color: rgb(179, 188, 243);
+  }
+.modal-content{
+    background-image: url(./img/fondo.jpg);
+    padding: 30px;
+}
+#img2{
+    width: 100vh;
+    position: absolute;
+    left: 25%;
+    top: -6%;
+}
+
+#boton {
+    border: 3px solid rgb(67, 193, 207);
+    border-radius: 20px;
+}
+#A {
+    z-index: 10;
+    padding: 15px;
+    background-color: rgb(255, 239, 205);
+    border-radius: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-around;
+    border: 3px solid rgb(67, 193, 207);
+
+}
+
+#titulo {
+    display: grid;
+    grid-column: 1/3;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#aa {
+    font-size: 25px;
+    margin-left: 8%;
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+#bb {
+    position: relative;
+}
+
+#img1 {
+    width: 700px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+#boton:hover {
+    background-color: rgb(67, 193, 207);
+}
+
+#boto {
+    background-color: rgb(67, 193, 207);
+}
+
+#sinto {
+    height: 200px;
+
+}
+
+.modal-header {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+@media screen and (max-width:1050px) {
+    #A {
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:700px) {
+    #A {
+        text-align: center;
+        
+    }
+    #titulo {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+}
+@media screen and (max-width:620px) {
+    body{
+        padding: 80px 100px;
+    }
+}
+@media screen and (max-width:515px) {
+    body{
+        padding: 80px 50px;
+    }
+}
+@media screen and (max-width:427px) {
+    body{
+        padding: 80px 25px;
+        
+    }
+    #img1{
+        width: 350px;
+    }
+    .card{
+       margin-bottom: 20px;
+    }
+}
+@media screen and (max-width:320px) {
+    .card{
+        width: 200px;
+    }
+  
+}
+@media screen and (max-width:278px) {
+    body{
+        padding: 80px 10px;
+        
+    }
+    #img1{
+        width: 250px;
+    }
+    #aa{
+        font-size: 20px;
+    }
+}
