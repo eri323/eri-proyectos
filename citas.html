@@ -37,10 +37,9 @@
                         <label for="">Propietario</label><input type="text" id="propietario">
 
                         <label for="">Telefono</label><input type="number" id="telefono">
-                        
 
-                            <label for="tipo" class="form-label">Tipo de animal</label>
-                        <select name="" id="tipo" class="form-select">
+                        <label for="">Tipo de animal</label>
+                        <select name="" id="tipo">
                             <option value=""></option>
                             <option value="Gato">Gato</option>
                             <option value="Perro">Perro</option>
@@ -48,8 +47,6 @@
                             <option value="Pez">Pez</option>
                             <option value="Reptil">Reptil</option>
                         </select>
-                        
-                        
 
                         <label for="">Fecha</label><input type="date" id="fecha">
 
@@ -62,7 +59,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button onclick="if(validar()) crear(), limpiar()" type="button" class="btn btn-primary"
-                            id="boto" data-bs-toggle="modal" data-bs-target="#exampleModal">Guardar</button>
+                            id="boto">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -75,7 +72,7 @@
 
         </div>
         <hr>
-        <a href="./citasvete.html">
+        <a href="./index.html">
             <button id="boton">Volver</button>
         </a>
         <div id="redes">
@@ -110,11 +107,11 @@
     let citaModificadaIndex = null;
     let mascotas = [
         {
-            gato: "./img/gato.png",
-            perro: "./img/perro.png",
-            ave: "./img/ave.png",
-            pez: "./img/pez.png",
-            reptil: "./img/reptil.png"
+            gato: "./img//gato.png",
+            perro: "./img//perro.png",
+            ave: "./img//ave.png",
+            pez: "./img//pez.png",
+            reptil: "./img//reptil.png"
         }
 
     ];
@@ -122,7 +119,7 @@
     function crear() {
         if (validar()) {
 
-           
+
             let cardsContainer = document.getElementById("tarjetas");
             let guardar = document.getElementById("boto");
             guardar.setAttribute("onclick", "crear()"); // Agregar el atributo onclick
@@ -272,11 +269,24 @@
 
         }
     }
-  
+    /* function guardarCambios() {
+        if (validar()) {
+            if (citaModificadaIndex === -1) {
+                crear();
+                limpiar();
+            } else {
+                // Si hay tarjeta modificada, se edita la existente
+                editarTarjeta(citaModificadaIndex);
+                citaModificadaIndex = -1; // Se restablece el valor de la variable para futuras ediciones
+            }
+
+        }
+    } */
     function editarCita(event) {
 
         let tarjeta = event.target.closest(".card");
 
+        let guardar = document.getElementById("boto");
 
 
         let nombreMascota = tarjeta.querySelector("h2").textContent;
@@ -294,35 +304,7 @@
         document.getElementById("hora").value = hora;
         document.getElementById("tipo").value = animal;
         document.getElementById("sinto").value = sintomas;
-       
-        /* let tipoSeleccionadoElement = document.getElementById("tipo");
-    tipoSeleccionadoElement.value = animal; // Establecer el tipo de animal en el modal
 
-    // Actualizar la imagen correspondiente al tipo de animal
-    let imagen = document.querySelector(".modal-body img");
-    if (animal === "Gato") {
-        imagen.src = mascota.gato;
-    } else if (animal === "Perro") {
-        imagen.src = mascota.perro;
-    } else if (animal === "Ave") {
-        imagen.src = mascota.ave;
-    } else if (animal === "Pez") {
-        imagen.src = mascota.pez;
-    } else if (animal === "Reptil") {
-        imagen.src = mascota.reptil;
-    }
-    document.getElementById("boto").addEventListener("click", function () {
-    if (citaModificadaIndex === null) {
-        if (validar()) {
-            crear();
-        }
-    } else {
-        editarCita();
-    }
-}); *//* 
-        const modalElement = document.getElementById("exampleModal");
-    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-    modalInstance.hide(); */
 
 
         citaModificadaIndex = Array.from(tarjeta.parentNode.children).indexOf(tarjeta);
@@ -398,7 +380,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
             });
             validacion = false;
         }
@@ -416,7 +398,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
             });
 
             validacion = false;
@@ -436,7 +418,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
             });
 
             validacion = false;
@@ -455,7 +437,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
             });
 
             validacion = false;
@@ -475,7 +457,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
 
             });
             validacion = false;
@@ -493,7 +475,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
 
             });
             validacion = false;
@@ -512,7 +494,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500);
+                }, 4000);
             });
             validacion = false;
         }
@@ -529,7 +511,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500);
+                }, 4000);
             });
             validacion = false;
         } 
@@ -549,7 +531,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
 
             });
             validacion = false;
@@ -567,7 +549,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500);
+                }, 4000);
             });
             validacion = false;
         }
@@ -587,7 +569,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500)
+                }, 4000)
 
             });
             validacion = false;
@@ -606,7 +588,7 @@
                 setTimeout(function () {
                     Alerta.innerHTML = "";
                     Alerta.style = "";
-                }, 3500);
+                }, 4000);
 
             });
 
